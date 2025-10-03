@@ -14,6 +14,11 @@ app.get('/', (req, res) => {
   res.send('Claims management API');
 });
 
+// Health check route
+app.get('/health', (req, res) => {
+  res.status(200).send('OK');
+});
+
 // Database connection
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,

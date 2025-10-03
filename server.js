@@ -24,6 +24,12 @@ mongoose.connect(process.env.MONGODB_URI, {
   console.error('Database connection error', err);
 });
 
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+});
+
 // Start server
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

@@ -9,22 +9,22 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 
-// Route de base
+// Base route
 app.get('/', (req, res) => {
-  res.send('API de gestion des réclamations');
+  res.send('Claims management API');
 });
 
-// Connexion à la base de données
+// Database connection
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 }).then(() => {
-  console.log('Connexion à la base de données réussie');
+  console.log('Database connection successful');
 }).catch(err => {
-  console.error('Erreur de connexion à la base de données', err);
+  console.error('Database connection error', err);
 });
 
-// Démarrage du serveur
+// Start server
 app.listen(PORT, () => {
-  console.log(`Serveur en cours d'exécution sur le port ${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
